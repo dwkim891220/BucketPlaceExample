@@ -1,7 +1,7 @@
-package com.example.dwkim.result
+package com.example.dwkim.repository.result
 
-import com.example.dwkim.model.Card
-import com.example.dwkim.model.User
+import com.example.dwkim.repository.model.Card
+import com.example.dwkim.repository.model.User
 import com.google.gson.annotations.SerializedName
 
 data class GetCardResult(

@@ -1,4 +1,4 @@
-package com.example.dwkim.model
+package com.example.dwkim.repository.model
 
 import com.google.gson.annotations.SerializedName
 
