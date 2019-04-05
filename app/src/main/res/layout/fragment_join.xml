@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/default_spacing"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/et_fJoin_nickName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="닉네임"
+        android:layout_marginBottom="@dimen/default_spacing"/>
+    <EditText
+        android:id="@+id/et_fJoin_introduction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="소개"
+        android:layout_marginBottom="@dimen/default_spacing"/>
+    <EditText
+        android:id="@+id/et_fJoin_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호"
+        android:layout_marginBottom="@dimen/default_spacing"/>
+    <Button
+        android:id="@+id/btn_fJoin_join"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="가입"/>
+</LinearLayout>

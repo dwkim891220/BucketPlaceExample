@@ -4,25 +4,26 @@ import androidx.lifecycle.Observer
 import com.example.dwkim.R
 import com.example.dwkim.util.showDialog
 import com.example.dwkim.viewmodel.UserViewModel
-import kotlinx.android.synthetic.main.fragment_signin.*
+import kotlinx.android.synthetic.main.fragment_join.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class SignInFragment : BaseFragment() {
+class JoinFragment : BaseFragment() {
     companion object {
-        val TAG = SignInFragment::class.java.simpleName
-        fun newInstance(): SignInFragment = SignInFragment().init() as SignInFragment
+        val TAG = JoinFragment::class.java.simpleName
+        fun newInstance(): JoinFragment = JoinFragment().init() as JoinFragment
     }
 
     private val viewModel: UserViewModel by viewModel()
 
-    override fun createLayout(): Int = R.layout.fragment_signin
+    override fun createLayout(): Int = R.layout.fragment_join
     override fun setLayouts() {
         initObserver()
 
-        btn_fSignIn_signIn.setOnClickListener {
-            viewModel.signIn(
-                et_fSignIn_nickName.text.toString(),
-                et_fSignIn_pwd.text.toString()
+        btn_fJoin_join.setOnClickListener {
+            viewModel.join(
+                et_fJoin_nickName.text.toString(),
+                et_fJoin_introduction.text.toString(),
+                et_fJoin_pwd.text.toString()
             )
         }
     }

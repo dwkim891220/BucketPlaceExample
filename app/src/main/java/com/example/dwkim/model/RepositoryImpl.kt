@@ -15,20 +15,29 @@ class RepositoryImpl(
     private val context: Context,
     private val api: NetworkRepository
 ): IRepository {
-    override fun join(user: User): Completable? = api.join(user)
-    override fun signIn(user: User): Completable? = api.signIn(user)
 
-    override fun getUser(id: Int): Single<User>? =
+    override fun join(
+        nickname: String,
+        introduction: String,
+        pwd: String
+    ): Completable = api.join(nickname, introduction, pwd)
+
+    override fun signIn(
+        nickname: String,
+        pwd: String
+    ): Completable = api.signIn(nickname, pwd)
+
+    override fun getUser(id: Int): Single<UserModel> =
         api.getUser(id).map { response ->
             if(response.ok){
-            response.user
+            UserModel(response.user)
             }else{
                 parse(response)
                 null
             }
         }
 
-    override fun getHome(): Single<HomeModel>? =
+    override fun getHome(): Single<HomeModel> =
         api.getHome().map { response ->
             if(response.ok){
                 HomeModel(response)
@@ -38,20 +47,22 @@ class RepositoryImpl(
             }
         }
 
-    override fun getCard(id: Int): Single<GetCardResult>? =
+    override fun getCard(id: Int): Single<CardDetailModel> =
         api.getCard(id).map { response ->
             if (response.ok) {
-                response
+                CardDetailModel(response)
             } else {
                 parse(response)
                 null
             }
         }
 
-    override fun getCards(page: Int, per: Int): Single<List<Card>>? =
+    override fun getCards(page: Int, per: Int): Single<List<CardModel>> =
         api.getCards(page, per).map {response ->
             if (response.ok) {
-                response.cards
+                response.cards.map{ card ->
+                    CardModel(card)
+                }
             } else {
                 parse(response)
                 null

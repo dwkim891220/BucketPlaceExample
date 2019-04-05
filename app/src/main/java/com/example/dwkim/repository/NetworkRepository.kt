@@ -1,6 +1,5 @@
 package com.example.dwkim.repository
 
-import com.example.dwkim.repository.model.User
 import com.example.dwkim.repository.result.GetCardResult
 import com.example.dwkim.repository.result.GetCardsResult
 import com.example.dwkim.repository.result.GetHomeResult
@@ -10,14 +9,19 @@ import io.reactivex.Single
 import retrofit2.http.*
 
 interface NetworkRepository {
+    @FormUrlEncoded
     @POST(USERS)
     fun join(
-        @Body user: User
+        @Field("nickname") nickName: String,
+        @Field("introduction") introduction: String,
+        @Field("pwd") pwd: String
     ): Completable
 
+    @FormUrlEncoded
     @POST(SIGN_IN)
     fun signIn(
-        @Body user: User
+        @Field("nickname") nickName: String,
+        @Field("pwd") pwd: String
     ): Completable
 
     @GET("$USERS/{id}")

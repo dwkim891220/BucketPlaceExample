@@ -21,6 +21,9 @@ android {
     }
 }
 
+androidExtensions { // for LayoutContainer in RecyclerView.ViewHolder
+    experimental = true
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

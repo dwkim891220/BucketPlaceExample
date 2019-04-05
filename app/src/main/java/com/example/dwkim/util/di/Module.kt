@@ -3,10 +3,11 @@ package com.example.dwkim.util.di
 import com.example.dwkim.model.RepositoryImpl
 import com.example.dwkim.repository.ENDPOINT
 import com.example.dwkim.repository.IRepository
+import com.example.dwkim.repository.NetworkRepository
 import com.example.dwkim.util.rx.ApplicationSchedulerProvider
 import com.example.dwkim.util.rx.SchedulerProvider
 import com.example.dwkim.viewmodel.HomeViewModel
-import com.example.dwkim.viewmodel.PhotoViewModel
+import com.example.dwkim.viewmodel.CardViewModel
 import com.example.dwkim.viewmodel.UserViewModel
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -34,17 +35,17 @@ val apiModule = module{
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
-            .create(IRepository::class.java)
+            .create(NetworkRepository::class.java)
     }
 
-    factory {
+    single {
         RepositoryImpl(androidContext(), get()) as IRepository
     }
 }
 
 val viewModelModules = module {
     viewModel { HomeViewModel(get(), get()) }
-    viewModel { PhotoViewModel(get(), get()) }
+    viewModel { CardViewModel(get(), get()) }
     viewModel { UserViewModel(get(), get()) }
 }
 
