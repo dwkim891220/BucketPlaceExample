@@ -68,7 +68,8 @@ class MainActivity : AppCompatActivity(), MainActivityListener {
             .beginTransaction()
             .add(
                 R.id.fl_aMain_container,
-                JoinFragment.newInstance())
+                JoinFragment.newInstance(),
+                JoinFragment.TAG)
             .addToBackStack(null)
             .commit()
     }
@@ -78,12 +79,15 @@ class MainActivity : AppCompatActivity(), MainActivityListener {
             .beginTransaction()
             .add(
                 R.id.fl_aMain_container,
-                SignInFragment.newInstance())
+                SignInFragment.newInstance(),
+                SignInFragment.TAG)
             .addToBackStack(null)
             .commit()
     }
 
     override fun successLogin() {
+        supportFragmentManager.popBackStack()
+
         btn_aMain_join.show(false)
         btn_aMain_signIn.show(false)
         btn_aMain_logout.show()

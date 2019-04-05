@@ -30,7 +30,7 @@ class SignInFragment : BaseFragment() {
     private fun initObserver(){
         viewModel.states.observe(this, Observer { state ->
             when(state){
-                is UserViewModel.CompleteJoin -> {
+                is UserViewModel.CompleteSignIn -> {
                     listener?.successLogin()
                 }
             }
